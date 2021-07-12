@@ -1,3 +1,5 @@
+"""This file contains auxiliary functions used in the main notebook for descriptive statistics and other analysis"""
+
 import numpy as np
 import pandas as pd
 import pandas.io.formats.style
@@ -70,7 +72,7 @@ def table_sum_stats(data):
 
 def table_sum_stats_husbands(data):
     """
-    Creates Descriptive statistics.
+    Creates Descriptive statistics for husbands samples.
     """
     variables = data[
         [
@@ -102,16 +104,20 @@ def table_sum_stats_husbands(data):
 
 
 def Table_3_panel_1(data):
+    """
+    Generates the first (upper) panel of Table 3 
+    from Angrist and Evans (1998).
+    """
     
     variables1=["(1) one girl", "(2) one boy", "difference (2) - (1)"]
     frequencies1=['Fraction of sample', 'Fraction that had another child']
     Table_3_panel1 = pd.DataFrame(np.nan, index=variables1, columns=frequencies1)
     Table_3_panel1.index.name="Sex of first child in families with one or more children"
-    a=pd.DataFrame(data['boy1st'].value_counts(normalize=True)*100)
+    a=pd.DataFrame(data['boy1st'].value_counts(normalize=True))
     a1=a.iloc[(0,0)]
     b1=a.iloc[(1,0)]
 
-    c=pd.DataFrame(data.groupby("boy1st")["more1k"].value_counts(normalize=True) * 100)
+    c=pd.DataFrame(data.groupby("boy1st")["more1k"].value_counts(normalize=True))
     c1=c.iloc[(0,0)]
     d1=c.iloc[(2,0)]
     diff1=d1-c1
@@ -127,29 +133,33 @@ def Table_3_panel_1(data):
 
 
 def Table_3_panel_2(data):
+    """
+    Generates the second (bottom) panel of Table 3 
+    from Angrist and Evans (1998).
+    """
     
     variables=["(1) one girl one boy", "(2) two boys", "(3) two girls", "(4) both same sex", "Difference (4) - (1)"]
     frequencies=['Fraction of sample', 'Fraction that had another child']
     Table_3_panel2 = pd.DataFrame(np.nan, index=variables, columns=frequencies)
     Table_3_panel2.index.name="Sex of first child in families with two or more children"
-    a2=pd.DataFrame(data['mixed_sex'].value_counts(normalize=True)*100)
+    a2=pd.DataFrame(data['mixed_sex'].value_counts(normalize=True))
     a2=a2.iloc[(1,0)]
-    b2=pd.DataFrame(data['two_boys'].value_counts(normalize=True)*100)
+    b2=pd.DataFrame(data['two_boys'].value_counts(normalize=True))
     b2=b2.iloc[(1,0)]
-    c2=pd.DataFrame(data['two_girls'].value_counts(normalize=True)*100)
+    c2=pd.DataFrame(data['two_girls'].value_counts(normalize=True))
     c2=c2.iloc[(1,0)]
-    d2=pd.DataFrame(data['same_sex'].value_counts(normalize=True)*100)
+    d2=pd.DataFrame(data['same_sex'].value_counts(normalize=True))
     d2=d2.iloc[(0,0)]
 
-    f2=pd.DataFrame(data.groupby("mixed_sex")["more3k"].value_counts(normalize=True) * 100)
+    f2=pd.DataFrame(data.groupby("mixed_sex")["more3k"].value_counts(normalize=True))
     f2=f2.iloc[(3,0)]
-    g2=pd.DataFrame(data.groupby("two_boys")["more3k"].value_counts(normalize=True) * 100)
+    g2=pd.DataFrame(data.groupby("two_boys")["more3k"].value_counts(normalize=True))
     g2=g2.iloc[(3,0)]
-    h2=pd.DataFrame(data.groupby("two_girls")["more3k"].value_counts(normalize=True) * 100)
+    h2=pd.DataFrame(data.groupby("two_girls")["more3k"].value_counts(normalize=True))
     h2=h2.iloc[(3,0)]
-    i2=pd.DataFrame(data.groupby("same_sex")["more3k"].value_counts(normalize=True) * 100)
+    i2=pd.DataFrame(data.groupby("same_sex")["more3k"].value_counts(normalize=True))
     i2=i2.iloc[(3,0)]
-    diff2=(i2-f2)/100
+    diff2=(i2-f2)
     #sd_diff2=np.sum(np.square(diff2))
 
     Table_3_panel2.iloc[0,0]=a2
@@ -167,3 +177,43 @@ def Table_3_panel_2(data):
     #Table_3_panel2.iloc[5,1]=sd_diff2
 
     return Table_3_panel2
+
+
+
+
+def difference_means(data, variables, instrument):
+    """
+    Computes difference in means between treated and 
+    untreated groups by instrument.
+    """
+    
+    table = pd.DataFrame(
+        {
+            "Mean difference": [],
+            "Std. err.": [],
+        }
+    )
+    
+    table["demographic_vars"] = variables
+    table = table.set_index("demographic_vars")
+    
+    for variable in variables:
+        
+        mean_bygroup_samesex = data.groupby(instrument)[variable].mean().to_dict()
+        mean_diff_samesex = mean_bygroup_samesex[1] - mean_bygroup_samesex[0]
+
+        std_err_samesex = np.sqrt(
+            np.power(data.loc[data[instrument] == 1][variable].sem(), 2)
+            + np.power(data.loc[data[instrument] == 0][variable].sem(), 2)
+        )
+        
+        outputs = [
+        mean_diff_samesex,
+        std_err_samesex,
+
+        ]
+        
+        table.loc[variable] = outputs
+        table = table.round(4)
+    
+    return table
