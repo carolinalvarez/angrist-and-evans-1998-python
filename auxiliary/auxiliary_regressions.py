@@ -19,6 +19,9 @@ from functools import reduce
 
 
 def OLS_Regressions_more2k(data1, data2):
+    """
+    Gets regression outputs 
+    """
     
     model1_table6=sm_api.OLS(data1["more2k"], sm_api.add_constant(data1["same_sex"])).fit()
     model2_table6=sm_api.OLS(data1["more2k"], sm_api.add_constant(data1[["same_sex", "boy1st", "boy2nd", "AGEM", 'agefstm', "blackm", "hispm",     "otheracem"]])).fit()
@@ -31,6 +34,8 @@ def OLS_Regressions_more2k(data1, data2):
     Table.custom_columns(['All women', 'All women', 'All women', 'Married women', 'Married women', 'Married women'], 
                          [1, 1, 1, 1, 1, 1])
     Table.significant_digits(4)
+    Table.covariate_order(["boy1st", "boy2nd", "same_sex", "two_boys", "two_girls", "AGEM", "agefstm", "hispm", "blackm", "otheracem", "const"])
+
     
     return Table
 
@@ -72,7 +77,7 @@ def OLS_Labor_Supply_Models(data, outcomes, controls_1, controls_2, controls_3):
         ]
         
         table.loc[outcome] = outputs
-        table = table.round(3)
+        table = table.round(2)
 
     return table
 

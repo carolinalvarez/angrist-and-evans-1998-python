@@ -19,7 +19,8 @@ from functools import reduce
 
 def data_preparation_1980(data):
     """
-    data preparation for 1980 Census Data Extract
+    Prepares the 1980 Census Data Extract for
+    being used in empirical analysis.
     """
     
     data = add_constant(data, has_constant='add')
@@ -123,7 +124,8 @@ def data_preparation_1980(data):
 
 def data_preparation_1990(data):
     """
-    prepares 1990 Census Data extract
+    Prepares the 1990 Census Data Extract for 
+    being used in empirical analysis.
     """
     
     data.rename({'WEEK89D': 'WEEKSD', 
@@ -224,7 +226,7 @@ def data_preparation_1990(data):
 
 def get_data_all_women_1980(data):
     """
-    Gets samples of "All women" for 1980 PUMS extracts
+    Gets samples of "All women" from 1980 PUMS extracts.
     """
     
     data_2=data[((data['AGEM']>=21) & (data['AGEM']<=35)) & (data['KIDCOUNT']>=2) & (data['AGEQ2ND']>4) & (data['agefstm']>=15) 
@@ -239,7 +241,7 @@ def get_data_all_women_1980(data):
 
 def get_data_all_women_1990(data):
     """
-    Gets samples of "All women" for 1990 PUMS extracts
+    Gets samples of "All women" from 1990 PUMS extracts
     """
     
     data_2=data[((data['AGEM']>=21) & (data['AGEM']<=35)) & (data['KIDCOUNT']>=2) & (data['agefstm']>=15) 
@@ -253,6 +255,9 @@ def get_data_all_women_1990(data):
 
 
 def data_preparation_married_couples(data):
+    """
+    Gets samples of "married women" from 1980 PUMS extracts.
+    """
 
     data["qtrmar"] = np.where((data["QTRMAR"] > 0), data["QTRMAR"] - 1, data["QTRMAR"])
 
@@ -292,6 +297,9 @@ def data_preparation_married_couples(data):
 
 
 def data_preparation_married_couples_1990(data):
+    """
+    Gets samples of "married women" from 1990 PUMS extracts.
+    """
 
     bin_labels=['bottom_third', 'middle_third', 'upper_third']
     data['husband_distribution']=pd.qcut(data['total_incomed'], q=3, labels=bin_labels)
@@ -320,6 +328,10 @@ def data_preparation_married_couples_1990(data):
 
 
 def rename_interactions_earnings(data): 
+    """
+    Renames variables interactions for computing Table 9 and 10
+    in Angrist and Evans (1998).
+    """
     
     data.rename({'more2k_lessgrad': 'more2k_lessgrad_earnings', 
                                 'more2k_hsgrad': 'more2k_hsgrad_earnings', 
@@ -334,6 +346,9 @@ def rename_interactions_earnings(data):
 
 
 def families_one_more_kid(data):
+    """
+    Gets samples of "families with one or more kids".
+    """
     
     data_2=data[((data['AGEM']>=21) & (data['AGEM']<=35)) & (data['KIDCOUNT']>=1)].copy()
     data_2.index = range(len(data_2.index))
