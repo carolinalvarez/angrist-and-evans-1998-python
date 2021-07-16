@@ -77,7 +77,7 @@ def OLS_Labor_Supply_Models(data, outcomes, controls_1, controls_2, controls_3):
         ]
         
         table.loc[outcome] = outputs
-        table = table.round(3)
+        table = table.round(2)
 
     return table
 
