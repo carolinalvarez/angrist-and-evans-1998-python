@@ -77,7 +77,7 @@ def OLS_Labor_Supply_Models(data, outcomes, controls_1, controls_2, controls_3):
         ]
         
         table.loc[outcome] = outputs
-        table = table.round(2)
+        table = table.round(3)
 
     return table
 
@@ -392,6 +392,38 @@ def mean_differences_instruments(data, outcomes):
     return table
 
 
+def mean_differences_instruments_90(data, outcomes):
+    
+    table = pd.DataFrame(
+        {
+            "Mean difference by Same Sex": [],
+            "Std. err.": [],
+        }
+    )
+    
+    table["outcomes"] = outcomes
+    table = table.set_index("outcomes")
+    
+    for outcome in outcomes:
+        
+        mean_samesex = data.groupby("same_sex")[outcome].mean().to_dict()
+        mean_diff_samesex = mean_samesex[1] - mean_samesex[0]
+
+        std_err_samesex = np.sqrt(
+            np.power(data.loc[data["same_sex"] == 1][outcome].sem(), 2)
+            + np.power(data.loc[data["same_sex"] == 0][outcome].sem(), 2)
+        )
+        
+        outputs = [
+        mean_diff_samesex,
+        std_err_samesex,
+
+        ]
+        
+        table.loc[outcome] = outputs
+        table = table.round(4)
+    
+    return table
 
 
 def wald_estimates_regressions(data, outcomes, instrument):

@@ -74,6 +74,7 @@ def data_preparation_1980(data):
 
     data["educm"] = np.where(
         ((data["FINGRADM"] == 1) | (data['FINGRADM'] == 2)), data["GRADEM"] - 2, data["GRADEM"] - 3) 
+    data["educm"]=np.maximum(0, data.educm)
 
     data["hsgrad"]=np.where(
         (data["educm"] == 12), 1, 0) 
