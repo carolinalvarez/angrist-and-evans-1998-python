@@ -71,6 +71,12 @@ def data_preparation_1980(data):
     
     data["otheraced"] = np.where(
         ((data["RACED"]!=1) & (data["hispd"] != 1) & (data["whited"] != 1)), 1, 0)
+    
+    data["AGEM"]=data["AGEM"]*1
+    data["AGED"]=data["AGED"]*1
+
+    data["WEEKSM"]=data["WEEKSM"]*1
+    data["WEEKSD"]=data["WEEKSD"]*1
 
     data["educm"] = np.where(
         ((data["FINGRADM"] == 1) | (data['FINGRADM'] == 2)), data["GRADEM"] - 2, data["GRADEM"] - 3) 
@@ -85,10 +91,16 @@ def data_preparation_1980(data):
     data["lessgrad"]=np.where(
         (data["educm"] < 12), 1, 0) 
     
-    data["total_incomed"]=(data.INCOME1D + np.maximum(0, data.INCOME2D))*2.099173554 #deflating wages as stated in Angrist and Evans (1998) 
+    #data["total_incomed"]=(data.INCOME1D + np.maximum(0, data.INCOME2D))*2.099173554 #deflating wages as stated in Angrist and Evans (1998) 
 
-    data["total_incomem"]=(data.INCOME1M + np.maximum(0, data.INCOME2M))*2.099173554 
+    #data["total_incomem"]=(data.INCOME1M + np.maximum(0, data.INCOME2M))*2.099173554
+    data["total_incomed"]=(data.INCOME1D + np.maximum(0, data.INCOME2D))
+    data["total_incomed"]=data["total_incomed"]*2.099173554
 
+    data["total_incomem"]=(data.INCOME1M + np.maximum(0, data.INCOME2M))
+    data["total_incomem"]=data["total_incomem"]*2.099173554
+    
+    data["FAMINC"]=data["FAMINC"]*1
     data["faminc"]=data.FAMINC*2.099173554
     data["faminc_log"]=(np.log(np.maximum(data.faminc, 1)))
 
