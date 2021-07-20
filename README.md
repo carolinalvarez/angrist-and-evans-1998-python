@@ -28,3 +28,6 @@ To ensure the reproducibility of the project, the repository is supported by a G
        src="https://github.com/OpenSourceEconomics/ose-data-science-course-project-carolinalvarez/actions/workflows/ci.yml/badge.svg"
        width="200" height="20">
 </a>
+
+
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/OpenSourceEconomics/ose-data-science-course-project-Abraham-newbie/master?filepath=project.ipynb)
