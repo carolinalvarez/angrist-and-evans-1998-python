@@ -6,7 +6,9 @@ Angrist and Evans (1998) focuse on the endogeneity problem arising when trying t
 
 The replication is carried on the main notebook from this repository. The auxiliary folder contains different functions made for the cleaning of 1980 and 1990 Census Extracts, data preparation, summary statistics, regressions and tables, and plots. It also contains pickled files for the results of simulations using causal forests as part as the proposed research extensions for estimating heterogenous treatment effects across different subgroups of schooling levels for women.
 
-My replication can also be visualized using nbviewer and mybinder under the following badges:
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+The notebook that contains my replication of the results of Angrist and Evans (1998) can also be visualized using nbviewer and mybinder under the following badges:
 
 <a href="https://nbviewer.jupyter.org/github/OpenSourceEconomics/ose-data-science-course-project-carolinalvarez/blob/master/Angrist_and_Evans_1998.ipynb"
    target="_parent">
@@ -21,7 +23,7 @@ My replication can also be visualized using nbviewer and mybinder under the foll
        width="109" height="20">
 </a>
 
-To ensure the reproducibility of the project, my repository is supported by GitHub Actions Continuos Integration (CI). The state of my workflow can be found here:
+Also, to ensure the reproducibility of the project, my repository is supported by GitHub Actions Continuos Integration (CI). The state of my workflow can be found here:
 
 </a>
 <a href="https://github.com/OpenSourceEconomics/ose-data-science-course-project-carolinalvarez/actions/workflows/ci.yml"
