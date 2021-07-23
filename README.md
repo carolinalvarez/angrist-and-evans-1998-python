@@ -6,11 +6,19 @@ Angrist and Evans (1998) focuse on the endogeneity problem arising when trying t
 
 The replication is carried on the main notebook from this repository. The auxiliary folder contains different functions made for the cleaning of 1980 and 1990 Census Extracts, data preparation, summary statistics, regressions and tables, and plots. It also contains pickled files for the results of simulations using causal forests as part as the proposed research extensions for estimating heterogenous treatment effects across different subgroups of schooling levels for women. To ensure the reproducibility of the proyect, the code for creating the pickled files can be found on the notebook as a code block.
 
-My proposed extensions on Angrist and Evans (1998) are:
+General structure of the notebook:
 
-* Estimation of the probability of additional childbearing conditional to women's education
-* A Causal Forest application for an alternative estimation of heterogeneity effects
-* A test for selection on unobservables or "violation of exclusion restriction"
+* Introduction
+* Identification Strategy
+* Empirical Methodology
+* Replication Angrist & Evans (1998)
+* Extensions on Angrist and Evans (1998) using 1980 Census Extracts
+    * Critical assesment
+    * Extension I: Exploration on the probability of additional childbearing conditional to women's education
+    * Extension II: Causal Forest application for an alternative estimation of heterogeneity effects
+    * Extension III: Testing for selection on unobservables or "violation of exclusion restriction"
+* Conclusions
+* Appendix: Variable Dictionary
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -38,3 +46,27 @@ Also, my repository is supported by GitHub Actions Continuos Integration (CI). T
        src="https://github.com/OpenSourceEconomics/ose-data-science-course-project-carolinalvarez/actions/workflows/ci.yml/badge.svg"
        width="200" height="20">
 </a>
+
+
+# References
+
+* **Angrist, J., & Evans, W. (1998)**. *[Children and Their Parents' Labor Supply: Evidence from Exogenous Variation in Family Size](https://www.jstor.org/stable/116844)*, 88(3), The American Economic Review.
+
+
+
+* **Athey, S., and Wager, S. (2019).** *[Estimating treatment effects with causal forests: An application](https://muse.jhu.edu/article/793356/summary)*. Observational Studies, 5(2), 37-51.
+
+
+* **Black, D., Joo, J., Lalonde, R., Smith, J., Taylor, E. (2015)**. *[Simple Test for SelectionB Bias: Learning more from instrumental variables](http://ftp.iza.org/dp9346.pdf)*. IZA Discussion Papers 9346, Institute of Labor Economics (IZA).
+
+
+* **Cunningham, S. (2021)**. [Causal Inference: The Mixtape](https://www.scunning.com/mixtape.html#:~:text=Causal%20Inference%3A%20The%20Mixtape.%20An%20accessible%2C%20contemporary%20introduction,allow%20social%20scientists%20to%20determine%20what%20causes%20what.). *Yale University Press* 
+
+
+* **Naushan, H. (2021)**. [Causal ML for Data Science: Deep Learning with Instrumental Variables](https://towardsdatascience.com/causal-ml-for-data-science-deep-learning-with-instrumental-variables-96e5b7cc0482). Towards Data Science-Blog.
+
+
+* **Stoffi, F., and Gnecco, G. (2019).** *[Estimating heterogeous causal effects in the presence of Irregular assignment mechanisms](https://arxiv.org/pdf/1808.04281.pdf)*. arXiv:1808.04281
+
+
+* **Winship, C., & Morgan, S. L. (2007).** Counterfactuals and causal inference: Methods and principles for social research. *Cambridge, England: Cambridge University Press.*
