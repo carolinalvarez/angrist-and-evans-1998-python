@@ -6,6 +6,12 @@ Angrist and Evans (1998) focuse on the endogeneity problem arising when trying t
 
 The replication is carried on the main notebook from this repository. The auxiliary folder contains different functions made for the cleaning of 1980 and 1990 Census Extracts, data preparation, summary statistics, regressions and tables, and plots. It also contains pickled files for the results of simulations using causal forests as part as the proposed research extensions for estimating heterogenous treatment effects across different subgroups of schooling levels for women. To ensure the reproducibility of the proyect, the code for creating the pickled files can be found on the notebook as a code block.
 
+My proposed extensions on Angrist and Evans (1998) are:
+
+* Estimation of the probability of additional childbearing conditional to women's education
+* A Causal Forest application for an alternative estimation of heterogeneity effects
+* A test for selection on unobservables or "violation of exclusion restriction"
+
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 The notebook that contains my replication of the results of Angrist and Evans (1998) can also be visualized using nbviewer and mybinder under the following badges:
