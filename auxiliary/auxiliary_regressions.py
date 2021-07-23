@@ -20,7 +20,7 @@ from functools import reduce
 
 def OLS_Regressions_more2k(data1, data2):
     """
-    Gets regression outputs 
+    Gets regression outputs for table 6
     """
     
     model1_table6=sm_api.OLS(data1["more2k"], sm_api.add_constant(data1["same_sex"])).fit()
@@ -41,7 +41,11 @@ def OLS_Regressions_more2k(data1, data2):
 
 
 
-def OLS_Labor_Supply_Models(data, outcomes, controls_1, controls_2, controls_3):
+def Labor_Supply_Models(data, outcomes, controls_1, controls_2, controls_3):
+    """
+    Gets regression outputs for table 7 and 8.
+    Computes OLS and IV models
+    """
 
     table = pd.DataFrame(
         {
@@ -84,6 +88,10 @@ def OLS_Labor_Supply_Models(data, outcomes, controls_1, controls_2, controls_3):
 
 
 def OLS_Labor_Supply_Interactions_wifes(data, Interaction, outcome):
+    """
+    Computes OLS estimators with interaction terms for wife's outcomes
+    Replicates table 9 and 10
+    """
     
     table = pd.DataFrame(
         {
@@ -114,6 +122,10 @@ def OLS_Labor_Supply_Interactions_wifes(data, Interaction, outcome):
 
 
 def OLS_Labor_Supply_Interactions_husbands(data1, data2, data3, Interaction, outcome):
+    """
+    Computes OLS estimators with interaction terms for husband's outcomes
+    Replicates table 9 and 10
+    """
     
     table = pd.DataFrame(
         {
@@ -149,6 +161,10 @@ def OLS_Labor_Supply_Interactions_husbands(data1, data2, data3, Interaction, out
 
 
 def OLS_Labor_Supply_First_Stage_wifes(data, Interaction, outcome):
+    """
+    Computes OLS first stage estimators with interaction terms for wife's outcomes
+    Replicates table 9 and 10
+    """
     
     table = pd.DataFrame(
         {
@@ -180,6 +196,10 @@ def OLS_Labor_Supply_First_Stage_wifes(data, Interaction, outcome):
 
 
 def OLS_Labor_Supply_First_Stage_husbands(data, Interaction, outcome):
+    """
+    Computes OLS first stage estimators with interaction terms for husband's outcomes
+    Replicates table 9 and 10
+    """
     
     table = pd.DataFrame(
         {
@@ -209,6 +229,10 @@ def OLS_Labor_Supply_First_Stage_husbands(data, Interaction, outcome):
 
 
 def IV_Labor_Supply_Interactions(data, data2, data3, data4, data5, outcome, outcome2):
+    """
+    Computes IV estimators with interaction terms 
+    Replicates table 9 and 10
+    """
     
     table = pd.DataFrame(
         {
@@ -286,6 +310,10 @@ def IV_Labor_Supply_Interactions(data, data2, data3, data4, data5, outcome, outc
 
 
 def mean_samples(data, Variables_list, outcome):
+    """
+    Computes mean of samples 
+    Replicates table 9 and 10
+    """
     
     table = pd.DataFrame(
         {
@@ -310,6 +338,9 @@ def mean_samples(data, Variables_list, outcome):
 
 
 def IV_Comparison_Models(data, outcomes, controls):
+    """
+    Computes IV estimators for replicating table 11
+    """
 
     table = pd.DataFrame(
         {
@@ -347,6 +378,9 @@ def IV_Comparison_Models(data, outcomes, controls):
 
 
 def mean_differences_instruments(data, outcomes):
+    """
+    computes table 5
+    """
     
     table = pd.DataFrame(
         {
@@ -393,6 +427,9 @@ def mean_differences_instruments(data, outcomes):
 
 
 def mean_differences_instruments_90(data, outcomes):
+    """
+    computes table 5
+    """
     
     table = pd.DataFrame(
         {
@@ -427,6 +464,9 @@ def mean_differences_instruments_90(data, outcomes):
 
 
 def wald_estimates_regressions(data, outcomes, instrument):
+    """
+    computes table 5
+    """
 
     table = pd.DataFrame(
         {
