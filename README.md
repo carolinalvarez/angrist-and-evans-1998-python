@@ -63,7 +63,7 @@ Also, my repository is supported by GitHub Actions Continuos Integration (CI). T
 * **Cunningham, S. (2021)**. [Causal Inference: The Mixtape](https://www.scunning.com/mixtape.html#:~:text=Causal%20Inference%3A%20The%20Mixtape.%20An%20accessible%2C%20contemporary%20introduction,allow%20social%20scientists%20to%20determine%20what%20causes%20what.). *Yale University Press* 
 
 
-* **Naushan, H. (2021)**. [Causal ML for Data Science: Deep Learning with Instrumental Variables](https://towardsdatascience.com/causal-ml-for-data-science-deep-learning-with-instrumental-variables-96e5b7cc0482). Towards Data Science-Blog.
+* **Naushan, H. (2021)**. [Causal ML for Data Science: Deep Learning with Instrumental Variables](https://towardsdatascience.com/causal-ml-for-data-science-deep-learning-with-instrumental-variables-96e5b7cc0482). 
 
 
 * **Stoffi, F., and Gnecco, G. (2019).** *[Estimating heterogeous causal effects in the presence of Irregular assignment mechanisms](https://arxiv.org/pdf/1808.04281.pdf)*. arXiv:1808.04281
