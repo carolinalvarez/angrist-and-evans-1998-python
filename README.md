@@ -4,7 +4,9 @@
 
 Angrist and Evans (1998) focuse on the endogeneity problem arising when trying to estimate the labor-supply consequence of childbearing for women. The authors use an instrumental variable approach by exploiting the parental preferences for a mixed sibling-sex composition (i.e., children of different gender) to construct instrumental variables using same sex and twin variables. The findings of the paper is that IV estimates statistically significant and smaller than OLS, suggesting that OLS might exaggerate the effect of childbearing on labor-supply outcomes. For samples of all women and married women, the estimated coefficients of having a third child are negative, which suggest that childbearing has a negative effect on labor-supply.
 
-The replication is carried on the main notebook from this repository. The auxiliary folder contains different functions made for the cleaning of 1980 and 1990 Census Extracts, data preparation, summary statistics, regressions and tables, and plots. The replication can also be visualized using nbviewer and mybinder:
+The replication is carried on the main notebook from this repository. The auxiliary folder contains different functions made for the cleaning of 1980 and 1990 Census Extracts, data preparation, summary statistics, regressions and tables, and plots. It also contains pickled files for the results of simulations using causal forests as part as the proposed research extensions for estimating heterogenous treatment effects across different subgroups of schooling levels for women.
+
+My replication can also be visualized using nbviewer and mybinder under the following badges:
 
 <a href="https://nbviewer.jupyter.org/github/OpenSourceEconomics/ose-data-science-course-project-carolinalvarez/blob/master/Angrist_and_Evans_1998.ipynb"
    target="_parent">
@@ -19,7 +21,7 @@ The replication is carried on the main notebook from this repository. The auxili
        width="109" height="20">
 </a>
 
-To ensure the reproducibility of the project, the repository is supported by a GitHub Actions Continuos Integration (CI). The state of my workflow can be found here:
+To ensure the reproducibility of the project, my repository is supported by GitHub Actions Continuos Integration (CI). The state of my workflow can be found here:
 
 </a>
 <a href="https://github.com/OpenSourceEconomics/ose-data-science-course-project-carolinalvarez/actions/workflows/ci.yml"
